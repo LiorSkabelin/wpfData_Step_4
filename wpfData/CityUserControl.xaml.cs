@@ -12,9 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using Model;
-using ViewModel;
-
+using wpfData.ServiceReferenceSnack;
 
 namespace wpfData_Step_4
 {
@@ -23,14 +21,14 @@ namespace wpfData_Step_4
     /// </summary>
     public partial class CityUserControl : UserControl
     {
-        private CityDB cityDB;
+        private ServiceSnackClient serviceSnack;
 
         public CityUserControl()
         {
             InitializeComponent();
 
-            cityDB = new CityDB();
-            cityListView.ItemsSource = cityDB.SelectAll();
+            serviceSnack = new ServiceSnackClient();
+            cityListView.ItemsSource = serviceSnack.GetAllCites();
         }
     }
 }
